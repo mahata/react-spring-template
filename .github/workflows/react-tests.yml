@@ -5,6 +5,9 @@ on: [push]
 jobs:
   build:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./web
     steps:
       - uses: actions/checkout@v2
 
@@ -12,9 +15,6 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: '18'
-
-      - name: Move to ./web/ directory
-        run: cd ./web/
 
       - name: Install Dependencies
         run: npm install
