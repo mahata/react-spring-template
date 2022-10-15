@@ -3,7 +3,7 @@ name: Spring Boot Tests
 on: [push]
 
 jobs:
-  build:
+  test-and-build:
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -16,6 +16,32 @@ jobs:
         with:
           distribution: 'temurin'
           java-version: 17.0
+          cache: 'gradle'
 
       - name: Run Tests
         run: ./gradlew test
+
+      - name: Run Tests
+        run: ./gradlew build -x test
+
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: demo.jar
+          path: ./build/libs/demo-0.0.1-SNAPSHOT.jar  # TODO: 0.0.1 shouldn't be hardcoded
+
+  publish:
+    run-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./server
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Download Artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: demo.jar
+
+      - name: Display structure of downloaded files
+        run: ls -R
