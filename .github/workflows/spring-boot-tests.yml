@@ -31,8 +31,9 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: demo.jar
-          path: build/libs/demo-0.0.1-SNAPSHOT.jar  # TODO: 0.0.1 shouldn't be hardcoded
           if-no-files-found: error
+          # `upload-artifact` doesn't respect `working-directory`: https://github.com/actions/upload-artifact/issues/232#issuecomment-964235360
+          path: server/build/libs/demo-0.0.1-SNAPSHOT.jar  # TODO: 0.0.1 shouldn't be hardcoded
 
   publish:
     runs-on: ubuntu-latest
