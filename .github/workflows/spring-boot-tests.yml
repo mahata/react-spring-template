@@ -27,7 +27,7 @@ jobs:
       - name: Upload Artifact
         uses: actions/upload-artifact@v3
         with:
-          name: demo.jar
+          name: demo-0.0.1-SNAPSHOT.jar
           if-no-files-found: error
           # `upload-artifact` doesn't respect `working-directory`: https://github.com/actions/upload-artifact/issues/232#issuecomment-964235360
           path: server/build/libs/demo-0.0.1-SNAPSHOT.jar  # TODO: 0.0.1 shouldn't be hardcoded
@@ -44,8 +44,8 @@ jobs:
       - name: Download Artifact
         uses: actions/download-artifact@v3
         with:
-          name: demo.jar
-          path: server/build/libs/demo.jar
+          name: demo-0.0.1-SNAPSHOT.jar
+          path: server/build/libs/
 
       - name: Display structure of downloaded files
         run: ls -R
