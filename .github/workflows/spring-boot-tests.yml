@@ -21,8 +21,11 @@ jobs:
       - name: Run Tests
         run: ./gradlew test
 
-      - name: Run Tests
+      - name: Build Artifact
         run: ./gradlew build -x test
+
+      - name: DEBUG
+        run: tree ./build/libs
 
       - name: Upload Artifact
         uses: actions/upload-artifact@v3
