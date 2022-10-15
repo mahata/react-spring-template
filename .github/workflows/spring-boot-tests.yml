@@ -24,9 +24,6 @@ jobs:
       - name: Build Artifact
         run: ./gradlew build -x test
 
-      - name: DEBUG
-        run: tree ./build/libs
-
       - name: Upload Artifact
         uses: actions/upload-artifact@v3
         with:
@@ -48,6 +45,7 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: demo.jar
+          path: server/build/libs/demo.jar
 
       - name: Display structure of downloaded files
         run: ls -R
