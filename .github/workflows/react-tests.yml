@@ -40,11 +40,10 @@ jobs:
           username: ${{ github.repository_owner }}
           password: ${{ secrets.GH_PAT_CR }}
 
-
       - name: Build and push
         uses: docker/build-push-action@v2
         with:
-          context: ./server
+          context: ./web
           push: true
           # TODO: `1.0.0` should be actual version number
           tags: |
