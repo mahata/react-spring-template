@@ -61,6 +61,7 @@ jobs:
         with:
           context: ./server
           push: true
+          # TODO: `1.0.0` should be actual version number
           tags: |
             ghcr.io/${{ github.repository_owner }}/${{ env.IMAGE_NAME }}:latest
             ghcr.io/${{ github.repository_owner }}/${{ env.IMAGE_NAME }}:1.0.0
