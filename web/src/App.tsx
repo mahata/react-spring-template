@@ -6,6 +6,7 @@ function App() {
   const [status, setStatus] = useState<String>("unknown");
 
   useEffect(() => {
+    // TODO: Do *NOT* hardcode the server URL
     fetch("http://localhost:8080/status", { method: 'GET' })
       .then((response) => {
         if (response.ok) {
